@@ -1,0 +1,6 @@
+Sobre o Projeto.
+
+* Pegar o nome da pessoa que esta tentando entrar no lugar
+* Perguntar quem a convidou
+* Um botão que quando clicado verifica no codigo java script 
+para ver se de fato ela foi convidade.

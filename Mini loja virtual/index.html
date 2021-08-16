@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Virtual</title>
+</head>
+
+<body>
+    <h2>Vitrine:</h2>
+
+    <div id="produtos">
+
+    </div>
+    <!--produtos-->
+
+    <h2>Carrinho:</h2>
+
+    <div id="carrinhos">
+
+    </div>
+    <!--carrinhos-->
+
+    <script>
+        const itens = [
+            {
+                id: 0,
+                nome: 'camiseta',
+                img: 'image.jpg',
+                quantidade: 0
+            },
+            {
+                id: 1,
+                nome: 'short',
+                img: 'image.jpg',
+                quantidade: 0
+            },
+            {
+                id: 2,
+                nome: 'sapato',
+                img: 'image.jpg',
+                quantidade: 0
+            },
+        ]
+
+        inicializarLoja = () => {
+            var containerProdutos = document.getElementById('produtos');
+            // Função para percorrer os itens
+            itens.map((val) => {
+                //console.log(val.nome);
+                containerProdutos.innerHTML += `
+             
+                <div class="produto-single">
+                    <img src="`+ val.img + `" />
+                    <p>`+ val.nome + `</p>
+                    <a key="`+ val.id + `" href="#">adicionar ao carrinho!</a>
+                </div>
+                
+                `;
+
+            })
+
+        }
+
+        inicializarLoja();
+
+        atualizarCarrinho = () => {
+            var vontainerCarrinho = document.getElementById('carrinho');
+            containerCarrinho.innerHTML = "";
+            itens.map((val) => {
+                if (val.quantidade > 0) {
+                    containerCarrinho.innerHTML += `
+                    <p>`+ val.nome` | quantidade: ` + val.quantidade + `</p>
+                    <hr>
+                    `;
+                }
+            })
+
+            var links = document.getElementsByTagName('a');
+
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener("click", function () {
+                    let key = this.getAttribute('key');
+                    itens[key].quantidade++;
+                    atualizarCarrrinho();
+                    return false;
+                })
+            }
+    </script>
+</body>
+
+</html>
